@@ -1,14 +1,10 @@
---OPEN STUIO AND CHECK SIZE AND POSITION
-
-
-
 local Players = game:GetService("Players")
 while not game:GetService("Players").LocalPlayer do
 	wait(0.1)
 end
 
 if DebugMode then
-	warn("Lisbon - Starting")
+	warn("Flame is injecting..")
 end
 local UserHWID = nil
 ExecutorAutomatic = false
@@ -16,23 +12,23 @@ if not game:IsLoaded() then
 	wait(0.5)
 	if game:IsLoaded() then
 		if DebugMode then
-			warn("Lisbon - AutoExec Detection false")
+			warn("Flame: AutoExec is false.")
 		end
 		return
 	else
 		ExecutorAutomatic = true
 		if DebugMode then
-			warn("Lisbon - AutoExec Detection true")
+			warn("Flame: AutoExec is true.")
 		end
 	end
 end
 if DebugMode then
-	warn("Lisbon - Game Loaded")
+	warn("Flame has loaded!")
 end
 local KeySys = game:GetObjects("rbxassetid://8065404628")[1]
 
 if DebugMode then
-	warn("Lisbon - Loaded KeyUI")
+	warn("Loading Keysystem.")
 end
 
 if not gethui then
@@ -52,7 +48,7 @@ end
 KeySys.Parent = parent
 KeySys.Main.ElseDesc2.Text = "Alternatively you can buy Premium at https://discord.gg/sirius"
 KeySys.Enabled = false
-KeySys.Main.Visible = true
+KeySys.Main.Visible = false
 
 for _, ui in ipairs(game:GetService("CoreGui"):GetChildren()) do
 	if ui.Name == "KeySystem" and ui ~= KeySys then
@@ -62,15 +58,13 @@ for _, ui in ipairs(game:GetService("CoreGui"):GetChildren()) do
 end
 
 if DebugMode then
-	warn("Lisbon - Protected KeyUI")
+	warn("Flame: KeySysUI was protected.")
 end
 
 local http_request = http_request;
 local c = identifyexecutor()
 if syn then
-	http_request = syn.request
-elseif c == "ScriptWare" then
-	http_request = http.request
+	http_request = syn.request --[[This is an old script and likely has old executor functions. I will try cleaning these up.]]
 end
 
 if http_request == nil then
@@ -85,7 +79,7 @@ end
 local Domain = game:GetObjects("rbxassetid://12016197276")[1]
 
 if DebugMode then
-	warn("Lisbon - Loaded Main UI")
+	warn("Flame: Attempting to load DomainX UI.")
 end
 
 local protected = false
@@ -106,7 +100,7 @@ else
 end
 
 if DebugMode then
-	warn("Lisbon - Protected Main UI")
+	warn("Flame: MainUI protected!")
 end
 
 Domain.Parent = parent
@@ -119,12 +113,12 @@ Domain.Main.KeybindNote.TextTransparency = 0.4
 wait(0.2)
 
 local DefaultKeybind = "K"
-local DiscordLink = "discord.gg/sirius"
-local DiscordLink2 = "R8D6gNFsYh"
+local DiscordLink = "https://dsc.gg/flamexp"
+local DiscordLink2 = "https://hyperionlol.github.io"
 local NotificationDuration = 7
 local DomainEnabled = true
-local Price = "$7.99"
-local CustomFolderName = "Lisbon Custom Scripts"
+local Price = "1.5K R$"
+local CustomFolderName = "FlameCustomScripts"
 local KeyWaitTime = 60
 
 local MlemixMode = false
@@ -150,12 +144,12 @@ local homedb = false
 local db = false
 local Keybind = DefaultKeybind
 if writefile and isfile and readfile and delfile then
-	if isfile("Lisbon Keybind.txt") then
-		if readfile("Lisbon Keybind.txt") then
-			if readfile("Lisbon Keybind.txt") then
-				Keybind = readfile("Lisbon Keybind.txt")
+	if isfile("FlameKeyBind.txt") then
+		if readfile("FlameKeyBind.txt") then
+			if readfile("FlameKeyBind.txt") then
+				Keybind = readfile("FlameKeyBind.txt")
 			else
-				delfile("Lisbon Keybind.txt")
+				delfile("FlameKeyBind.txt")
 			end
 		end
 	else
@@ -180,10 +174,10 @@ local inventorywasopen = false
 local SnowHubSupported = false
 local plrconopen = false
 local CustomScripts = {}
-local LisbonLoaded = false
+local LisbonLoaded = false --[[The Preservation of DomainX this uses.]]
 local playerservice = game:GetService("Players")
 local plrlistopen = false
-local baropen = false
+local baropen = true
 local ContentProvider = game:GetService("ContentProvider")
 local loadedmainassets = false
 local scriptsopen = false
@@ -214,18 +208,6 @@ local UniversalScripts = {
 		Author = "Edge",
 		Loadstring = "https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source",
 		Colour = Color3.fromRGB(57, 57, 57),
-	}, -------	
-	venenium = {
-		Name = "Venenium Bypasser",
-		Author = "discord.gg/venenium",
-		Loadstring = "https://raw.githubusercontent.com/ImUltik/Lisbon/main/Scripts/Vadrifts",
-		Colour = Color3.fromRGB(40, 39, 43),
-	}, -------  
-	SiriusUni = {
-		Name = "Sirius Universal",
-		Author = "Sirius",
-		Loadstring = "https://raw.githubusercontent.com/shlexware/Sirius/request/game/Universal",
-		Colour = Color3.fromRGB(188, 57, 59),
 	},
 	SimpleSpy = {
 		Name = "SimpleSpy",
@@ -284,14 +266,6 @@ local DetectionScripts = {
 		Premium = false,
 		KeySys = true,
 		Loadstring = "https://visionhub.dev/script.lua",
-	},
-	DarkHub = {
-		Name = "Dark Hub",
-		Description = "One of the most popular script hubs to date, with little compromise.",
-		Games = {2377868063,263761432,606849621,3527629287,2555870920,5081773298,2551991523,1962086868,3101667897,6483072762,6494529140,3297964905,5523314295,301549746,5041144419,370731277,142823291,621129760,6284583030,5104202731},
-		Premium = false,
-		KeySys = true,
-		Loadstring = "https://raw.githubusercontent.com/RandomAdamYT/DarkHub/master/Init",
 	},
 	IdentityFraud = {
 		Name = "Identity Fraud",
@@ -392,7 +366,7 @@ local DetectionScripts = {
 		Loadstring = "http://void-scripts.com/Scripts/myRest.lua",
 	},
 		ALiteralBaseplate = {
-		Name = "A Literal Baseplate",
+		Name = "Infinite Yield",
 		Description = "Example for infinite yield",
 		Games = {4483381587},
 		Premium = false,
@@ -420,11 +394,6 @@ local DetectionScripts = {
 		Loadstring = "https://pastebin.com/raw/Q4qQh4MS",
 	},
 }
-
-
-
-
-
 
 function figureNotifs(Stack,Container)
 	local stacksize = 1
@@ -526,12 +495,12 @@ function Toast(Content,Font)
 			notifClone:Destroy()
 			figureToasts(ToastStack,notificationContainer)
 		end)
-	end --cock
+	end
 end
 
 function Notify(Title,Content,Image,Rotation,ImageRectOffset)
 	spawn(function()
-		-- Set Up
+
 		if not NotificationsEnabled then
 			return
 		end
@@ -571,7 +540,7 @@ function Notify(Title,Content,Image,Rotation,ImageRectOffset)
 		notifClone.Parent = notificationContainer
 		notifClone.Position = UDim2.new(-1,0,0,0)
 		wait(0.5)
-		-- Sound
+
 		local sound = Instance.new("Sound")
 		sound.Parent = Domain
 		sound.SoundId = "rbxassetid://"..255881176
@@ -579,12 +548,12 @@ function Notify(Title,Content,Image,Rotation,ImageRectOffset)
 		sound.Volume = 2
 		sound.PlayOnRemove = true
 		sound:Destroy()
-		-- Animate
+
 		notifClone:TweenPosition(UDim2.new(0,0,0,0),'Out','Quint',0.5,true)
 
 		table.insert(NotificationStack,notifClone)
 		figureNotifs(NotificationStack,notificationContainer)
-		-- Wait
+
 		wait(0.3)
 		if Rotation then
 			local transitionInfo = TweenInfo.new(0.8, Enum.EasingStyle.Quint)
@@ -607,7 +576,7 @@ function Notify(Title,Content,Image,Rotation,ImageRectOffset)
 			wait(NotificationDuration)
 		end
 
-		-- Close
+
 		for a,b in pairs(NotificationStack) do
 			if b == notifClone then
 				table.remove(NotificationStack,a)
@@ -3451,7 +3420,7 @@ function CheckWritefile()
 	if isfile and delfile and writefile and readfile then
 		return true
 	end
-	warn("Warning - writefile is not supported")
+	warn("Flame: writefile is not supported")
 	return false
 end
 
@@ -3518,7 +3487,7 @@ function dec(data)
 end
 
 function StartAntiKick()
-	--hookfunction(LocalPlayer.Kick,(function() Notify("Anti Kick","Lisbon has avoided the game kicking you locally",4400697855) wait(9e9) end))
+	hookfunction(LocalPlayer.Kick,(function() Notify("Anti Kick","Flame has avoided the game kicking you locally",4400697855) wait(9e9) end))
 end
 
 function StartAntiIdle()
@@ -3536,9 +3505,9 @@ end
 
 function LoadThemes()
 	if DebugMode then
-		warn("Lisbon - Loading Themes")
+		warn("Flame: Loading Themes")
 	end
-	Toast("Loading "..Theme.Name.." theme to Lisbon")
+	Toast("Loading "..Theme.Name.." theme to Flame")
 	for _, obj in ipairs(Domain:GetDescendants()) do
 		if obj.ClassName == "TextButton" or obj.ClassName == "TextLabel" or obj.ClassName == "TextBox" then
 			if Theme.Font ~= "" then
@@ -3582,7 +3551,7 @@ function LoadThemes()
 end
 
 function FirstCheck()
-	if isfile("Lisbon Version.txt") or isfile("Lisbon Keybind.txt") then
+	if isfile("FlameVER.txt") or isfile("FlameKeyBind.txt") then
 		firsttime = false
 	else
 		firsttime = true
@@ -3611,7 +3580,7 @@ function VersionCheck()
 			local RequestEnabled = (syn and syn.request) or (http and http.request) or http_request
 			if RequestEnabled and not UserIsPremium then
 				if DebugMode then
-					warn("Lisbon - Joining Discord")
+print("ERROR")
 				end
 				RequestEnabled({
 					Url = 'http://127.0.0.1:6463/rpc?v=1',
@@ -3665,15 +3634,15 @@ function VersionCheck()
 				})
 			})
 			if DebugMode then
-				warn("Lisbon - Joining Discord")
+				warn("Flame - Joining Discord")
 			end
 		end
 		if DebugMode then
-			warn("Lisbon - Starting writefile")
+			warn("Flame - Starting writefile")
 		end
-		writefile("Lisbon Version.txt",tostring(Release))
+		writefile("FlameVER.txt",tostring(Release))
 		if DebugMode then
-			warn("Lisbon - Writing new version file")
+			warn("Flame - Writing new version file")
 		end
 	end
 end
@@ -3681,13 +3650,13 @@ end
 function ContinueBoot()
 	DMNReady = true
 	if DebugMode then
-		warn("Lisbon - Continuing Boot Process (begun)")
+		warn("Flame - Continuing Boot Process (begun)")
 	end
-	Domain.Premium.Robux.Text = "or 2899 Robux"
+	Domain.Premium.Robux.Text = "or 1500 Robux"
 	FirstCheck()
 	VersionCheck()
 	if DebugMode then
-		warn("Lisbon - Checked Version success")
+		warn("Flame - Checked Version success")
 	end
 
 	if getconnections then
@@ -3695,7 +3664,7 @@ function ContinueBoot()
 			v:Disable()
 		end
 		if DebugMode then
-			warn("Lisbon - Disabled ScriptContext Errors")
+			warn("Flame - Disabled ScriptContext Errors")
 		end
 	end
 	for _, ob in ipairs(Domain:GetDescendants()) do
@@ -3704,22 +3673,22 @@ function ContinueBoot()
 		end
 	end
 	if DebugMode then
-		warn("Lisbon - Increasing ZIndex")
+		warn("Flame - Increasing ZIndex")
 	end
 	if UserIsPro and ThemeEnabled then
 		LoadThemes()
 	end
 	if DebugMode then
-		warn("Lisbon - Loading Themes (if any)")
+		warn("Flame - Loading Themes (if any)")
 	end
 	if ThemeEnabled and not UserIsPro then
-		Toast("You must be Pro to use Themes")
-		PromptPremium()
-	end
+print("DomainX money grab lol")	
+
+end
 
 	StartPopUpFramework()
 	if DebugMode then
-		warn("Lisbon - Starting pop up framework")
+		warn("Flame - Starting pop up framework")
 	end
 	StartAntiKick()
 	StartAntiIdle()
@@ -3741,7 +3710,7 @@ function ContinueBoot()
 	Domain.Main.Visible = true
 
 	if DebugMode then
-		warn("Lisbon - Started AntiKick and AntiIdle")
+		warn("Flame - Started AntiKick and AntiIdle")
 	end
 
 
@@ -3756,37 +3725,37 @@ function ContinueBoot()
 		end
 		Domain.Home.User.Avatar.Image = game:GetService("Players"):GetUserThumbnailAsync(LocalPlayer.UserId,Enum.ThumbnailType.HeadShot,Enum.ThumbnailSize.Size420x420)
 		if DebugMode then
-			warn("Lisbon - Finished Player Data")
+			warn("Flame - Finished Player Data")
 		end	
 	end
 	if not Connected then
-		Toast("Unable to connect to Lisbon server","GothamBold")
-		UserIsPremium = false
-		UserIsPro = false
+		Toast("Failed to connect.","GothamBold")
+		UserIsPremium = true
+		UserIsPro = true
 	end	
 	if not ExecutorAutomatic or firsttime then
 		if DebugMode then
-			warn("Lisbon - First time or not autoexec")
+			warn("Flame - First time or not autoexec")
 		end
 		local sound = Instance.new("Sound")
 		sound.Parent = Domain
 		sound.SoundId = "rbxassetid://"..6958727243
 		sound.Name = "boot"
 		if DebugMode then
-			warn("Lisbon - Instance Success!")
+			warn("Flame - Instance Success!")
 		end
 		sound.Volume = 10
 		sound.PlayOnRemove = true
 		if DebugMode then
-			warn("Lisbon - Waiting for sound load")
+			warn("Flame - Waiting for sound load")
 		end
 		sound:Destroy()
 		if DebugMode then
-			warn("Lisbon - Destroyed sound (loaded)")
+			warn("Flame - Destroyed sound (loaded)")
 		end
 		wait(0.75)
 		if DebugMode then
-			warn("Lisbon - Preparing effect")
+			warn("Flame - Preparing effect")
 		end
 		if workspace.CurrentCamera.FieldOfView <= 71 and workspace.CurrentCamera.FieldOfView >= 70  then
 			if DebugMode then
@@ -3803,19 +3772,19 @@ function ContinueBoot()
 		wait(0.6)
 		Domain.Main.KeybindNote.Visible = false
 		if DebugMode then
-			warn("Lisbon - Keybind Note false")
+			warn("Flame - Keybind Note false")
 		end
 		if DebugMode then
-			warn("Lisbon - Opening main")
+			warn("Flame - Opening main")
 		end
 		OpenMain()
 		if DebugMode then
-			warn("Lisbon - Opened Main")
+			warn("Flame - Opened Main")
 		end
 
 	else
 		if DebugMode then
-			warn("Lisbon - Autoexec")
+			warn("Flame - Autoexec")
 		end
 		wait(1)
 		Domain.Main.KeybindNote.Text = "tap "..Keybind.." to start"
@@ -3829,30 +3798,31 @@ function ContinueBoot()
 
 	Toast("Welcome to Lisbon v"..Release.. ", "..LocalPlayer.DisplayName,"GothamBold")
 
-	--if protected then
-	--	if Client ~= "Universal" then
-	--		Toast(Client.." has protected the interface from detection")
-	--	else
-	--		Toast("Your executor has protected the interface from detection")
-	--	end
-	--end
+if protected then
+		if Client ~= "Universal" then
+			Toast(Client.." has protected the interface from detection")
+		else
+			Toast("Your executor has protected the interface from detection")
+		end
+	end
+
 	if CheckWritefile() then
-		if isfile("Lisbon Wallpaper.txt") then
+		if isfile("FlameWallpaper.txt") then
 			if isfile(readfile("Lisbon Wallpaper.txt")) then
 				if getsynasset then
 					Domain.Home.Wallpaper.Visible = true
-					Domain.Home.Wallpaper.Image = getsynasset(readfile("Lisbon Wallpaper.txt"))
-					Domain.Home.WallpaperManage.WBG.WBox.Text = readfile("Lisbon Wallpaper.txt")
+					Domain.Home.Wallpaper.Image = getsynasset(readfile("FlameWallpaper.txt"))
+					Domain.Home.WallpaperManage.WBG.WBox.Text = readfile("FlameWallpaper.txt")
 				else
 					Domain.Home.Wallpaper.Visible = true
-					Domain.Home.Wallpaper.Image = getcustomasset(readfile("Lisbon Wallpaper.txt"))
-					Domain.Home.WallpaperManage.WBG.WBox.Text = readfile("Lisbon Wallpaper.txt")
+					Domain.Home.Wallpaper.Image = getcustomasset(readfile("FlameWallpaper.txt"))
+					Domain.Home.WallpaperManage.WBG.WBox.Text = readfile("FlameWallpaper.txt")
 				end
 			end
 		end
 	end
 
-	-- Sorts out script order
+--
 	Domain.Scripts.List.Template.Size = UDim2.new(0.979, 0,0.055, 0)
 	Domain.Scripts.List.Template.Visible = false
 	local newpos = 1
@@ -3897,7 +3867,7 @@ function ContinueBoot()
 			end
 			if not UserIsPremium and LoadedCustomScripts > 0 then
 				Notify("System","Custom Scripts Disabled - You must be Essential to use these",3944680095)
-				PromptPremium()
+print("DomainX Cash Grab Prevention")
 			end	
 		end
 	end
@@ -3934,32 +3904,16 @@ function ContinueBoot()
 	end
 end
 
-function CheckLatest()
-	if DebugMode then
-		warn("Lisbon - Checking version")
-	end
-	--loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Lisbon/main/routine',true))()
-	--local ver = game:HttpGet('https://raw.githubusercontent.com/shlexware/Lisbon/main/latest')
-	--print(ver)
-	--if tonumber(ver) > Release then
-	--	Connected = false
-	--	warn("Not up to date, needs to be on "..tostring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Lisbon/main/latest')))
-	--	return false
-	--else
-	Connected = true
-	--end
-end
-
-
+print("Bypassing VersionCheck..")
 
 function BootLisbon()
 	if DebugMode then
-		warn("Lisbon - Beginning Boot Process")
+		warn("Flame - Beginning Boot Process")
 	end
 	Domain.Main.Visible = true
 	Domain.Main.Position = UDim2.new(0.5, 0, 1.05, 0)
 	Domain.Main.KeybindNote.Position = UDim2.new(0.5,0,-1.303,0)
-	Domain.Main.KeybindNote.Text = "Loading Lisbon"
+	Domain.Main.KeybindNote.Text = "Loading Flame"
 	Domain.Main.KeybindNote.Visible = true
 	Domain.Main.Buttons.ModulesButton.Visible = false
 	Domain.Main.KeybindNote.TextTransparency = 0.4
@@ -3977,25 +3931,20 @@ function BootLisbon()
 	UpdateExecutor()
 
 	if not DomainEnabled then
-		Notify("Not Enabled"," Lisbon is currently disabled",4384402990)
+		Notify("Not Enabled"," Flame is currently disabled",4384402990)
 		wait(NotificationDuration+3)
 		Domain:Destroy()
 		return
 	end
 
 	if DebugMode then
-		warn("Lisbon - Continuing Boot Process")
+		warn("Flame - Continuing Boot Process")
 	end
 	ContinueBoot()
 
 	LisbonLoaded = true
 end
 
-
-
-
-
--- Main functionality of core buttons
 
 Domain.Main.Buttons.HomeButton.Interact.MouseButton1Click:Connect(function()
 	local transitionInfo = TweenInfo.new(0.2, Enum.EasingStyle.Quint)
@@ -4303,14 +4252,14 @@ function PlaySound()
 		Domain.Home.Music.Playing.Text = "Unknown"
 	end
 	Domain.Home.Music.Toggle.ImageRectOffset = Vector2.new(804,124)
-	Toast("Playing music using LisbonSound")
+	Toast("Playing music using FlameSound")
 end
 
 Domain.Home.Music.Toggle.MouseButton1Click:Connect(function()
 	if MusicPlaying then
 		MusicPlaying = false
 		if not Domain:FindFirstChildWhichIsA("Sound") then
-			Toast("Lisbon was unable to locate any Sound to stop")
+			Toast("Flame was unable to locate any Sound to stop")
 			Domain.Home.Music.Toggle.ImageRectOffset = Vector2.new(764,244)
 		else
 			Domain.Home.Music.Toggle.ImageRectOffset = Vector2.new(764,244)
@@ -4354,7 +4303,7 @@ function ChangeKeybind(Key)
 		writefile("Lisbon Keybind.txt",tostring(NewKeyNoEnum))
 		Toast("Successfully changed Keybind to "..tostring(NewKeyNoEnum))
 	else
-		Toast("Successfully changed Keybind to "..tostring(NewKeyNoEnum)..", however we're unable to save for next use")
+		Toast("Successfully changed Keybind to "..tostring(NewKeyNoEnum)..", however we're unable to save for next use =(")
 	end
 end
 
@@ -4400,8 +4349,8 @@ game.Players.PlayerAdded:Connect(function(Player)
 		return
 	end
 	Domain.Home.Data.data.Players.Text = "Players: <b>"..tostring(#game.Players:GetChildren()).."/"..tostring(game.Players.MaxPlayers).."</b>"
-	if Player.Name == "AdiossLoki" then
-		Toast("The developer of Lisbon, Ferry, has joined your server")
+	if Player.Name == "Your_MilkMaker" then
+		Toast("The owner of Flame, hyperion , has joined your server")
 	end
 	if LocalPlayer:IsFriendsWith(Player.UserId) then
 		Notify("Friend Joined",Player.Name..", your friend, has joined your server",4335480896)
@@ -4545,8 +4494,7 @@ Domain.JoinCodes.CreateJC.MouseButton1Click:Connect(function()
 			end
 		end
 	else
-		Toast("You have to be Pro to use this feature")
-		PromptPremium()
+print("DomainXCashGrabPrevented")
 	end
 end)
 
@@ -4904,8 +4852,8 @@ end)()
 
 
 coroutine.wrap(function()
-	wait(1000)
-	Toast("Enjoying Lisbon? Let us know in our Discord!")
+	wait(2000)
+	Toast("Enjoying Flame? Let us know in our Discord!")
 	Toast(DiscordLink,"GothamBold")
 end)()
 
